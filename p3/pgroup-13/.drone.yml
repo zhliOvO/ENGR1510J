@@ -1,0 +1,16 @@
+kind: pipeline
+type: ssh
+name: default
+server:
+  host:
+    from_secret: host
+  user:
+    from_secret: username
+  ssh_key:
+    from_secret: ssh_key
+steps:
+  - name: Build_all
+    commands:
+      - cd src/
+      - cmake ./
+      - make
